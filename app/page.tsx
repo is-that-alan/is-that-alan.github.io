@@ -6,6 +6,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import TopRightNav from "@/components/top-right-nav";
+import Footer from "@/components/footer";
 
 export default function HomePage() {
   const router = useRouter()
@@ -24,25 +25,25 @@ export default function HomePage() {
 
       <main className="flex flex-col items-center justify-center flex-1">
         {/* Logo */}
-        <div className="mb-8">
+        <div className="mb-10">
           <Image
             src="/images/alanwong_dev_logo.png"
             alt="alanwong.dev"
-            width={400}
-            height={133}
+            width={500}
+            height={166}
             className="max-w-[90vw] h-auto"
           />
         </div>
 
         {/* Search Bar */}
-        <form onSubmit={handleSearch} className="w-[582px] max-w-[90%] mb-6">
+        <form onSubmit={handleSearch} className="w-[682px] max-w-[90%] mb-6">
           <div className="relative">
             <input
               type="text"
               placeholder=""
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-12 px-4 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[16px] text-[#202124] hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
+              className="w-full h-14 px-5 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[18px] text-[#202124] hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
             />
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
               <Mic className="w-6 h-6 text-[#5f6368] cursor-pointer hover:text-[#202124]" />
@@ -76,6 +77,7 @@ export default function HomePage() {
         {/* Language options */}
         <div className="text-xs text-[#5f6368]">alanwong.dev offered in: 繁體中文 简体中文</div>
       </main>
+      <Footer />
     </div>
   )
 }
