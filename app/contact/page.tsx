@@ -32,7 +32,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Email</h3>
-                  <p className="text-gray-600">your.email@example.com</p>
+                  <p className="text-gray-600">thw.alanwong@gmail.com</p>
                 </div>
               </div>
 
@@ -42,7 +42,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+852 6752 6300</p>
                 </div>
               </div>
 
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Location</h3>
-                  <p className="text-gray-600">San Francisco, CA</p>
+                  <p className="text-gray-600">Hong Kong</p>
                 </div>
               </div>
             </div>
@@ -62,22 +62,10 @@ export default function ContactPage() {
               <h3 className="font-medium text-gray-900 mb-4">Connect with me</h3>
               <div className="flex space-x-4">
                 <a
-                  href="#"
-                  className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
-                >
-                  <Github className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="#"
+                  href="https://www.linkedin.com/in/alanwth/"
                   className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
                 >
                   <Linkedin className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors"
-                >
-                  <Twitter className="w-5 h-5 text-white" />
                 </a>
               </div>
             </div>
