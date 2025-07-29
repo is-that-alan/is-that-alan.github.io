@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      <header className="p-4 flex items-center justify-between">
+      <header className="p-4 flex items-center">
         <GoogleSearchBar />
       </header>
 
