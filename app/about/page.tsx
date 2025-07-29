@@ -1,12 +1,13 @@
+import Header from "@/components/header";
 import GoogleSearchBar from "@/components/google-search-bar";
 import Image from "next/image";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      <header className="p-4 flex items-center">
+      <Header>
         <GoogleSearchBar />
-      </header>
+      </Header>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex gap-8">

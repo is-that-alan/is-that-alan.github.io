@@ -3,9 +3,9 @@ import { Search, Mic, Camera } from "lucide-react"
 import type React from "react"
 import Image from "next/image"
 
-import Navigation from "@/components/navigation"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import TopRightNav from "@/components/top-right-nav";
 
 export default function HomePage() {
   const router = useRouter()
@@ -20,7 +20,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-[#202124] antialiased">
-      <Navigation />
+      <TopRightNav />
 
       <main className="flex flex-col items-center justify-center flex-1">
         {/* Logo */}
