@@ -25,7 +25,7 @@ export default function Header({ children, className }: HeaderProps) {
       <div className="flex-1 flex justify-center px-8">
         {children}
       </div>
-      <nav className="flex items-center space-x-4 text-sm text-[#5f6368]">
+      <nav className="flex items-center space-x-6 text-lg text-[#5f6368]">
         <Link href="/projects" className="hover:underline">
           Projects
         </Link>

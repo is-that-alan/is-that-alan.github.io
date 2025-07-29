@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function TopRightNav() {
   return (
-    <div className="absolute top-6 right-6 flex items-center space-x-4 text-sm text-[#5f6368]">
+    <div className="absolute top-6 right-6 flex items-center space-x-6 text-lg text-[#5f6368]">
       <Link href="/projects" className="hover:underline">
         Projects
       </Link>
