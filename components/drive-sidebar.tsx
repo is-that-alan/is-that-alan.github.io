@@ -10,21 +10,21 @@ export default function DriveSidebar() {
           <span>New</span>
         </button>
       </div>
-      <nav className="space-y-2">
-        <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg">
-          <Folder className="w-5 h-5 mr-3" />
+      <nav className="space-y-4">
+        <a href="#" className="flex items-center px-4 py-2 text-lg font-medium text-gray-700 bg-gray-200 rounded-lg">
+          <Folder className="w-6 h-6 mr-3" />
           My Drive
         </a>
-        <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-          <Users className="w-5 h-5 mr-3" />
+        <a href="#" className="flex items-center px-4 py-2 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+          <Users className="w-6 h-6 mr-3" />
           Shared with me
         </a>
-        <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-          <Star className="w-5 h-5 mr-3" />
+        <a href="#" className="flex items-center px-4 py-2 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+          <Star className="w-6 h-6 mr-3" />
           Starred
         </a>
-        <a href="#" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
-          <Trash2 className="w-5 h-5 mr-3" />
+        <a href="#" className="flex items-center px-4 py-2 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-lg">
+          <Trash2 className="w-6 h-6 mr-3" />
           Trash
         </a>
       </nav>

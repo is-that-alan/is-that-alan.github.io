@@ -1,32 +1,34 @@
-
-import Image from "next/image";
+import Image from 'next/image';
+import { FileText, MoreVertical } from 'lucide-react';
 
 interface FilePreviewCardProps {
   name: string;
   previewImage: string;
-  description: string;
-  repoLink?: string;
-  demoLink?: string;
+  description: string; // Kept for modal functionality, not displayed on card
 }
 
-export default function FilePreviewCard({ name, previewImage, description, repoLink, demoLink }: FilePreviewCardProps) {
+export default function FilePreviewCard({ name, previewImage }: FilePreviewCardProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden group cursor-pointer">
-      <div className="w-full h-40 bg-gray-100 flex items-center justify-center overflow-hidden">
-        <Image
-          src={previewImage}
-          alt={name}
-          width={200}
-          height={160}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-      <div className="p-3 border-t border-gray-200">
-        <p className="text-sm text-gray-800 font-medium truncate">{name}</p>
-        <p className="text-xs text-gray-600 mt-1">{description}</p>
-        <div className="flex space-x-4 mt-2">
-          {repoLink && <a href={repoLink} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">Repo</a>}
-          {demoLink && <a href={demoLink} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">Demo</a>}
+    <div className="bg-[#f8f9fa] border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 ease-in-out">
+      <div className="p-4">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center min-w-0">
+            <FileText className="w-6 h-6 text-blue-600 flex-shrink-0" />
+            <span className="ml-3 font-medium text-gray-700 truncate">
+              {name}
+            </span>
+          </div>
+          <button className="p-2 rounded-full text-gray-500 hover:bg-gray-200 hover:text-gray-800">
+            <MoreVertical className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="w-full h-56 bg-gray-100 rounded-lg overflow-hidden relative flex items-center justify-center">
+          <Image
+            src={previewImage}
+            alt={name}
+            fill
+            className="object-contain p-2"
+          />
         </div>
       </div>
     </div>
