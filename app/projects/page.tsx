@@ -1,38 +1,42 @@
 
+"use client";
+
 import Header from "@/components/header";
 import DriveSidebar from "@/components/drive-sidebar";
 import DriveSearchBar from "@/components/drive-search-bar";
 import FilePreviewCard from "@/components/file-preview-card";
+import ProjectPreview from "@/components/project-preview";
 import { Folder } from "lucide-react"
-
+import { useState } from "react";
 
 export default function DrivePage() {
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+
   const projects = [
     {
-      name: "Agentic Q&A Chatbot",
+      name: "Deep Reinforcement Learning T-Rex",
       type: "file",
-      previewImage: "/placeholder.jpg",
+      previewImage: "/img/dino_run_demo.gif",
+      description: "Training a reinforcement learning agent to play the Google Chrome dinosaur game.",
     },
     {
-      name: "Adaptive AI Prompting Framework",
+      name: "Power BI Market Dashboard",
       type: "file",
-      previewImage: "/placeholder.jpg",
+      previewImage: "/img/PBI_snapshot.png",
+      description: "A Power BI dashboard for visualizing market information and generating daily reports.",
     },
     {
-      name: "Risk Aggregation Engine",
+      name: "Streamlit Financial Dashboard",
       type: "file",
-      previewImage: "/placeholder.jpg",
+      previewImage: "/img/streamlist_snapshot.png",
+      description: "A Streamlit dashboard for downloading and visualizing market data.",
     },
     {
-      name: "Marketing Campaign Analysis",
+      name: "IBM Capstone Project",
       type: "folder",
     },
     {
-      name: "NLP Text Classification",
-      type: "folder",
-    },
-    {
-      name: "Cross-Asset Risk Analysis",
+      name: "Yelp Recommendation System",
       type: "folder",
     },
   ]
@@ -53,7 +57,13 @@ export default function DrivePage() {
           <h2 className="text-lg font-medium text-gray-800 mb-4">Suggested</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {featuredProjects.map((project) => (
-              <FilePreviewCard key={project.name} name={project.name} previewImage={project.previewImage!} />
+              <div key={project.name} onClick={() => setSelectedProject(project)}>
+                <FilePreviewCard 
+                  name={project.name} 
+                  previewImage={project.previewImage!} 
+                  description={project.description!} 
+                />
+              </div>
             ))}
           </div>
 
@@ -75,6 +85,7 @@ export default function DrivePage() {
           </div>
         </main>
       </div>
+      {selectedProject && <ProjectPreview project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </div>
   );
 }
