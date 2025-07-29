@@ -1,7 +1,6 @@
-
+import { LayoutGrid } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import SkillsMenu from "./skills-menu";
 import { ReactNode } from "react";
 
 interface HeaderProps {
@@ -36,7 +35,13 @@ export default function Header({ children, className }: HeaderProps) {
         <Link href="/contact" className="hover:underline">
           Contact
         </Link>
-        <SkillsMenu />
+                <Image
+          src="/images/waffle_icon.png"
+          alt="Waffle icon"
+          width={24}
+          height={24}
+          className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
+        />
         <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-blue-300 transition-all">
           <Image
             src="/images/digital_alan.jpg"
