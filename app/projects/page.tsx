@@ -16,32 +16,79 @@ export default function DrivePage() {
     {
       name: "Deep Reinforcement Learning T-Rex",
       type: "file",
-      previewImage: "/img/dino_run_demo.gif",
+      category: "suggested",
+      previewImage: "/images/dino_run_demo.gif",
       description: "Training a reinforcement learning agent to play the Google Chrome dinosaur game.",
     },
     {
       name: "Power BI Market Dashboard",
       type: "file",
-      previewImage: "/img/PBI_snapshot.png",
+      category: "suggested",
+      previewImage: "/images/PBI_snapshot.png",
       description: "A Power BI dashboard for visualizing market information and generating daily reports.",
     },
     {
       name: "Streamlit Financial Dashboard",
       type: "file",
-      previewImage: "/img/streamlist_snapshot.png",
+      category: "suggested",
+      previewImage: "/images/streamlist_snapshot.png",
       description: "A Streamlit dashboard for downloading and visualizing market data.",
+    },
+    {
+      name: "Yelp Recommendation System",
+      type: "file",
+      category: "suggested",
+      previewImage: "/images/yelp eda.png",
+      description: "An end-to-end data science project from preliminary studies to deployment.",
+    },
+    {
+      name: "Agentic Q&A Chatbot",
+      type: "file",
+      category: "file",
+      previewImage: "/images/agentic_q&a_chatbot.png",
+      description: "An agentic Q&A chatbot for real estate acquisition.",
+    },
+    {
+      name: "Adaptive AI Prompting Framework",
+      type: "file",
+      category: "file",
+      previewImage: "/images/adaptive_ai_prompting_framework.png",
+      description: "An adaptive AI prompting framework for improving business results.",
+    },
+    {
+      name: "Risk Aggregation Engine",
+      type: "file",
+      category: "file",
+      previewImage: "/images/risk_aggregation_engine.png",
+      description: "A risk aggregation engine for incorporating additive and non-additive metrics.",
+    },
+    {
+      name: "New Placeholder Project",
+      type: "file",
+      category: "file",
+      previewImage: "/images/new_placeholder_project.png",
+      description: "A placeholder for a future project.",
+    },
+    {
+      name: "Marketing Campaign Analysis",
+      type: "folder",
+    },
+    {
+      name: "NLP Text Classification",
+      type: "folder",
+    },
+    {
+      name: "Cross-Asset Risk Analysis",
+      type: "folder",
     },
     {
       name: "IBM Capstone Project",
       type: "folder",
     },
-    {
-      name: "Yelp Recommendation System",
-      type: "folder",
-    },
   ]
 
-  const featuredProjects = projects.filter((p) => p.type === 'file');
+  const suggestedFiles = projects.filter((p) => p.type === 'file' && p.category === 'suggested');
+  const regularFiles = projects.filter((p) => p.type === 'file' && p.category === 'file');
   const folderProjects = projects.filter((p) => p.type === 'folder');
 
   return (
@@ -54,9 +101,22 @@ export default function DrivePage() {
         <main className="flex-1 p-8 overflow-y-auto">
           <h1 className="text-2xl font-semibold text-gray-900 mb-6">My Drive</h1>
           
-          <h2 className="text-lg font-medium text-gray-800 mb-4">Suggested</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {featuredProjects.map((project) => (
+          <h2 className="text-lg font-medium text-gray-800 mb-4">Suggested Files</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {suggestedFiles.map((project) => (
+              <div key={project.name} onClick={() => setSelectedProject(project)}>
+                <FilePreviewCard 
+                  name={project.name} 
+                  previewImage={project.previewImage!} 
+                  description={project.description!} 
+                />
+              </div>
+            ))}
+          </div>
+
+          <h2 className="text-lg font-medium text-gray-800 mb-4">Files</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {regularFiles.map((project) => (
               <div key={project.name} onClick={() => setSelectedProject(project)}>
                 <FilePreviewCard 
                   name={project.name} 
