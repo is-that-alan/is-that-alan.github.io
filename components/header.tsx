@@ -22,6 +22,8 @@ export default function Header({ children, className }: HeaderProps) {
             className="cursor-pointer hover:opacity-80 transition-opacity"
           />
         </Link>
+      </div>
+      <div className="flex-1 flex justify-center px-8">
         {children}
       </div>
       <nav className="flex items-center space-x-4 text-sm text-[#5f6368]">
