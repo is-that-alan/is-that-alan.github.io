@@ -6,55 +6,47 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header>
-        <GoogleSearchBar />
+        <GoogleSearchBar defaultValue="Alan Wong" />
       </Header>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex gap-8">
           {/* Left side - Search results */}
           <div className="flex-1 max-w-2xl">
-            <div className="text-sm text-gray-500 mb-4">About 1,240,000 results (0.45 seconds)</div>
+            <div className="text-sm text-gray-500 mb-4">About 3 results (0.25 seconds)</div>
 
             {/* Search results */}
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl text-blue-600 hover:underline cursor-pointer mb-1">
-                  Your Name - Full Stack Developer
+                  <a href="/experience/nan-fung">Nan Fung International Properties - Associate - Data Science</a>
                 </h3>
-                <div className="text-sm text-green-700 mb-2">https://yourportfolio.github.io</div>
+                <div className="text-sm text-green-700 mb-2">https://www.nanfung.com/</div>
+                <div className="text-sm text-gray-500 mb-2">Jan 2024 – Present</div>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Passionate full-stack developer with expertise in modern web technologies. Experienced in building
-                  scalable applications using React, Node.js, and cloud platforms. Strong background in software
-                  engineering principles and agile development methodologies.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl text-blue-600 hover:underline cursor-pointer mb-1">Your Name - GitHub</h3>
-                <div className="text-sm text-green-700 mb-2">github.com/yourusername</div>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Open source contributions and personal projects. Active contributor to various JavaScript and Python
-                  libraries with 50+ repositories and 1000+ commits.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl text-blue-600 hover:underline cursor-pointer mb-1">Your Name | LinkedIn</h3>
-                <div className="text-sm text-green-700 mb-2">linkedin.com/in/yourname</div>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Professional network profile showcasing career progression and endorsements from colleagues and
-                  clients. Currently working as Senior Full Stack Developer.
+                  Built an agentic Q&A chatbot for real estate acquisition, achieving 80% accuracy in database retrieval. Developed an adaptive AI prompting framework, improving business team-approved results by 1.75x.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-xl text-blue-600 hover:underline cursor-pointer mb-1">
-                  Your Name's Technical Blog
+                  <a href="/experience/premialab">Premialab - Fintech Data Scientist</a>
                 </h3>
-                <div className="text-sm text-green-700 mb-2">yourblog.dev</div>
+                <div className="text-sm text-green-700 mb-2">https://www.premialab.com/</div>
+                <div className="text-sm text-gray-500 mb-2">July 2022 – Jan 2024</div>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Technical articles and tutorials covering modern web development, best practices, and emerging
-                  technologies. Over 50 published articles with 10k+ monthly readers.
+                  Led development of a risk aggregation engine, incorporating both additive and non-additive metrics such as H-VaR, resulting in a 60% reduction in report runtime. Optimized SQL processes, cutting query time by 90%.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl text-blue-600 hover:underline cursor-pointer mb-1">
+                  <a href="/experience/hkust">HKUST Fintech Research Project - Data Analytics Research Assistant</a>
+                </h3>
+                <div className="text-sm text-green-700 mb-2">https://www.hkust.edu.hk/</div>
+                <div className="text-sm text-gray-500 mb-2">Aug 2021 – July 2022</div>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Automated text classification, replacing manual processes with NLP models, achieving 90%+ accuracy. Fine-tuned GPT-2 and BERT on NVIDIA DGX using HuggingFace, optimizing performance for text classification tasks.
                 </p>
               </div>
             </div>
@@ -65,47 +57,44 @@ export default function AboutPage() {
             <div className="border border-gray-200 rounded-lg p-4 bg-white">
               <div className="text-center mb-4">
                 <Image
-                  src="/placeholder.svg?height=200&width=160"
-                  alt="Profile"
+                  src="/images/digital_alan.jpg"
+                  alt="Alan Wong"
                   width={160}
                   height={200}
                   className="rounded-lg mx-auto mb-3"
                 />
-                <h2 className="text-xl font-normal text-gray-900">Your Name</h2>
-                <p className="text-sm text-gray-600">Full Stack Developer</p>
+                <h2 className="text-xl font-normal text-gray-900">Alan Wong</h2>
+                <p className="text-sm text-gray-600">Associate - Data Science</p>
               </div>
 
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Born</span>
-                  <span className="text-gray-900">January 1, 1990</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Education</span>
-                  <span className="text-gray-900">Computer Science</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Location</span>
-                  <span className="text-gray-900">San Francisco, CA</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Experience</span>
-                  <span className="text-gray-900">5+ years</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Specialization</span>
-                  <span className="text-gray-900">React, Node.js</span>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <h3 className="font-medium text-gray-900 mb-2">Education</h3>
+                <div className="space-y-2 text-sm">
+                  <div>
+                    <p className="font-semibold">Georgia Institute of Technology</p>
+                    <p className="text-gray-600">MSc Analytics (In Progress)</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">University of Bath</p>
+                    <p className="text-gray-600">MSc Computer Science (Completed)</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">University of Bristol</p>
+                    <p className="text-gray-600">BSc Economics (Completed)</p>
+                  </div>
                 </div>
               </div>
 
               <div className="mt-4 pt-4 border-t border-gray-200">
                 <h3 className="font-medium text-gray-900 mb-2">Skills</h3>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">JavaScript</span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">React</span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Node.js</span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Python</span>
-                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">TypeScript</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">SQL</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">LangChain</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Power BI</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Airflow</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Spark</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Docker</span>
                 </div>
               </div>
             </div>
