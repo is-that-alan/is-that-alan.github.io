@@ -60,49 +60,49 @@ export default function AiOverviewPanel({ bio }: { bio?: string }) {
           </div>
           <div className="flex space-x-2">
             {sources.map((source) => (
-              <a key={source.name} href={source.url} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 px-2 py-1 bg-[#f1f3f4] rounded-full text-xs text-[#5f6368] hover:bg-[#e8eaed]">
-                <img src={source.favicon} alt={source.name} className="w-4 h-4 rounded-full" />
+              <a key={source.name} href={source.url} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 text-xs text-[#5f6368] hover:underline">
+                <img src={source.favicon} alt={source.name} className="w-3 h-3 rounded-full" />
                 <span>{source.name}</span>
               </a>
             ))}
           </div>
         </div>
 
-        <div className={`text-[#202124] text-base leading-6 ${!isExpanded ? 'gradient-fade max-h-60' : ''}`}>
-          <p>
+        <div className={`text-[#202124] text-base leading-6 transition-all duration-100 ease-in-out ${!isExpanded ? 'gradient-fade max-h-60' : 'max-h-full'}`}>
+          <div>
             {bio ? (
-              <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
-                {bio}
-              </span>
+              bio.split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                <p key={index} className="mb-4">{sentence}</p>
+              ))
             ) : (
               <>
-                <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
-                  This is an AI-generated overview for the "I'm Feeling Lucky" search.
-                </span>
-                The content is dynamically created based on your search query using advanced language models to provide relevant and contextual information. This panel is a placeholder to demonstrate the UI and animation of the Gemini-powered overviews in Google Search.
+                <p className="mb-4">
+                  <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
+                    This is an AI-generated overview for the "I'm Feeling Lucky" search.
+                  </span>
+                </p>
+                <p>
+                  The content is dynamically created based on your search query using advanced language models to provide relevant and contextual information. This panel is a placeholder to demonstrate the UI and animation of the Gemini-powered overviews in Google Search.
+                </p>
               </>
             )}
-          </p>
-
+          </div>
           {isExpanded && (
             <div className="mt-6 flex flex-col md:flex-row gap-6 fade-in">
-              <div className="flex-1">
-                <p>This is the expanded content area. Here, you can provide more detailed information, additional context, or a more in-depth explanation of the topic. The layout is designed to be flexible and can accommodate various types of content, including text, images, and lists.</p>
-              </div>
               <div className="w-full md:w-80 bg-[#e8f0fe] rounded-[12px] p-4">
                 <h3 className="font-semibold text-[#202124] mb-3">Related Articles</h3>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <div className="flex-1">
-                      <p className="font-semibold text-sm text-[#202124] truncate">What Is SEO - Search Engine Optimization?</p>
-                      <p className="text-xs text-[#5f6368]">23 Sept 2024 - Search Engine Land</p>
+                      <p className="font-semibold text-sm text-[#202124] truncate">Placeholder</p>
+                      <p className="text-xs text-[#5f6368]">23 Sept 2024 - Placeholder</p>
                     </div>
                     <div className="w-12 h-12 bg-[#e0e0e0] rounded-md"></div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="flex-1">
-                      <p className="font-semibold text-sm text-[#202124] truncate">What is SEO in digital marketing? - Mailchimp</p>
-                      <p className="text-xs text-[#5f6368]">Mailchimp</p>
+                      <p className="font-semibold text-sm text-[#202124] truncate">Placeholder</p>
+                      <p className="text-xs text-[#5f6368]">Placeholder</p>
                     </div>
                     <div className="w-12 h-12 bg-[#e0e0e0] rounded-md"></div>
                   </div>
