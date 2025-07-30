@@ -31,9 +31,11 @@ export function ApiKeyDialog({ isOpen, onClose, onSave }: ApiKeyDialogProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Enter Gemini API Key</DialogTitle>
+          <DialogTitle>Enter Your Gemini API Key</DialogTitle>
           <DialogDescription>
-            To enable Gemini search, please enter your API key. This key will only be stored for your current session.
+            <span className="font-semibold text-orange-500">Warning:</span> Your API key will be sent directly to Google's servers from your browser.
+            This is for demonstration purposes only. Do not use a key associated with a production environment.
+            The key is stored only for this session.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
