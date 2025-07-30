@@ -103,8 +103,23 @@ export default function HomePage() {
         </div>
 
         {/* Language options */}
-        <div className="text-xs text-[#5f6368]">alanwong.dev not offered in: 繁體中文 简体中文</div>
-
+          <div className="text-sm text-[#5f6368]">
+            alanwong.dev not offered in:
+            <span
+              className="text-[#4285f4] cursor-pointer hover:underline ml-2"
+              tabIndex={0}
+              role="button"
+            >
+              繁體中文
+            </span>
+            <span
+              className="text-[#4285f4] cursor-pointer hover:underline ml-2"
+              tabIndex={0}
+              role="button"
+            >
+              Française
+            </span>
+          </div>
         {/* Feature Flag */}
         <div className="mt-4 flex items-center">
           <input
@@ -114,7 +129,7 @@ export default function HomePage() {
             onChange={(e) => setUseGemini(e.target.checked)}
             className="mr-2"
           />
-          <label htmlFor="use-gemini" className="text-sm text-gray-600">Enable Gemini Search (Insecure Demo)</label>
+          <label htmlFor="use-gemini" className="text-sm text-gray-600">Enable Gemini Search (Warning: Insecure Demo)</label>
         </div>
 
         <ApiKeyDialog
