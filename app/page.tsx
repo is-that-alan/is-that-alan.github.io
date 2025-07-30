@@ -31,12 +31,12 @@ export default function HomePage() {
             alt="alanwong.dev"
             width={600}
             height={200}
-            className="max-w-[90vw] h-auto"
+            className="w-full max-w-[300px] md:max-w-[600px] h-auto"
           />
         </div>
 
         {/* Search Bar */}
-        <form onSubmit={handleSearch} className="w-[782px] max-w-[90%] mb-6">
+        <form onSubmit={handleSearch} className="w-full max-w-[90%] md:max-w-[782px] px-4 md:px-0 mb-6">
           <div className="relative">
             <input
               type="text"

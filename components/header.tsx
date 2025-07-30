@@ -2,6 +2,7 @@ import { LayoutGrid } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { MobileNav } from "./mobile-nav";
 
 interface HeaderProps {
   children?: ReactNode;
@@ -12,6 +13,7 @@ export default function Header({ children, className }: HeaderProps) {
   return (
     <header className={`p-4 flex items-center justify-between ${className}`}>
       <div className="flex items-center space-x-4">
+        <MobileNav />
         <Link href="/">
           <Image
             src="/images/alanwong_dev_logo.png"
@@ -25,7 +27,7 @@ export default function Header({ children, className }: HeaderProps) {
       <div className="flex-1 flex justify-center px-8">
         {children}
       </div>
-      <nav className="flex items-center space-x-6 text-lg text-[#5f6368]">
+      <nav className="hidden md:flex items-center space-x-6 text-lg text-[#5f6368]">
         <Link href="/projects" className="hover:underline">
           Projects
         </Link>
