@@ -6,11 +6,12 @@ import DriveSidebar from "@/components/drive-sidebar";
 import DriveSearchBar from "@/components/drive-search-bar";
 import FilePreviewCard from "@/components/file-preview-card";
 import ProjectPreview from "@/components/project-preview";
-import { Folder } from "lucide-react"
+import { Folder, Menu } from "lucide-react"
 import { useState } from "react";
 
 export default function DrivePage() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const projects = [
     {
@@ -94,15 +95,22 @@ export default function DrivePage() {
   return (
     <div className="h-screen flex flex-col bg-white">
       <Header className="bg-gray-50 border-b">
+        <div className="md:hidden">
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
         <DriveSearchBar />
       </Header>
       <div className="flex flex-1 overflow-hidden">
-        <DriveSidebar />
-        <main className="flex-1 p-8 overflow-y-auto">
+        <div className={`${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+          <DriveSidebar />
+        </div>
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
           <h1 className="text-2xl font-semibold text-gray-900 mb-6">My Drive</h1>
           
           <h2 className="text-lg font-medium text-gray-800 mb-4">Suggested Files</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {suggestedFiles.map((project) => (
               <div key={project.name} onClick={() => setSelectedProject(project)}>
                 <FilePreviewCard 
@@ -115,7 +123,7 @@ export default function DrivePage() {
           </div>
 
           <h2 className="text-lg font-medium text-gray-800 mb-4">Files</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {regularFiles.map((project) => (
               <div key={project.name} onClick={() => setSelectedProject(project)}>
                 <FilePreviewCard 
@@ -128,7 +136,7 @@ export default function DrivePage() {
           </div>
 
           <h2 className="text-lg font-medium text-gray-800 mb-4">Folders</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {folderProjects.map((project) => (
               <div
                 key={project.name}

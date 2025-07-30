@@ -1,3 +1,4 @@
+import AiOverviewPanel from "@/components/ai-overview-panel";
 import Header from "@/components/header";
 import GoogleSearchBar from "@/components/google-search-bar";
 import Image from "next/image";
@@ -10,9 +11,12 @@ export default function AboutPage() {
       </Header>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex gap-8">
+        <div className="flex flex-col md:flex-row gap-8">
           {/* Left side - Search results */}
           <div className="flex-1 max-w-2xl">
+            <div className="mb-6">
+              <AiOverviewPanel bio="This is a placeholder for a bio. It can be a brief introduction about yourself, your interests, and your professional background." />
+            </div>
             <div className="text-sm text-gray-500 mb-4">About 3 results (0.25 seconds)</div>
 
             {/* Search results */}
@@ -53,7 +57,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right side - Knowledge panel */}
-          <div className="w-80 flex-shrink-0">
+          <div className="w-full md:w-80 flex-shrink-0">
             <div className="border border-gray-200 rounded-lg p-4 bg-white">
               <div className="text-center mb-4">
                 <Image

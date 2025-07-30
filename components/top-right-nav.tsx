@@ -4,7 +4,7 @@ import { MobileNav } from "./mobile-nav";
 
 export default function TopRightNav() {
   return (
-    <div className="absolute top-6 right-6 flex items-center space-x-6 text-lg text-[#5f6368]">
+    <div className="absolute top-6 right-6 flex items-center space-x-6 text-xl text-[#3c4043]">
       <div className="md:hidden">
         <MobileNav />
       </div>
@@ -21,8 +21,8 @@ export default function TopRightNav() {
         <Image
           src="/images/waffle_icon.png"
           alt="Waffle icon"
-          width={24}
-          height={24}
+          width={28}
+          height={28}
           className="cursor-pointer opacity-60 hover:opacity-100 transition-opacity"
         />
         <div className="w-8 h-8 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-blue-300 transition-all">

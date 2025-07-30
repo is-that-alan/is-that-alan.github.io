@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { FlaskConical, ChevronDown, ChevronUp } from 'lucide-react';
 import ShimmerLoader from './shimmer-loader';
 
-export default function AiOverviewPanel() {
+export default function AiOverviewPanel({ bio }: { bio?: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -46,7 +46,7 @@ export default function AiOverviewPanel() {
   const sources = [
     { name: "Wikipedia", url: "https://en.wikipedia.org/", favicon: "/images/wikipedia_favicon.png" },
     { name: "BBC News", url: "https://www.bbc.com/news/", favicon: "/images/bbc_favicon.png" },
-    { name: "DeepMind", url: "https://theonion.com/", favicon: "/images/the_onion_favicon.png" },
+    { name: "The Onion", url: "https://theonion.com/", favicon: "/images/the_onion_favicon.png" },
   ];
 
   return (
@@ -70,10 +70,18 @@ export default function AiOverviewPanel() {
 
         <div className={`text-[#202124] text-base leading-6 ${!isExpanded ? 'gradient-fade max-h-60' : ''}`}>
           <p>
-            <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
-              This is an AI-generated overview for the "I'm Feeling Lucky" search.
-            </span>
-            The content is dynamically created based on your search query using advanced language models to provide relevant and contextual information. This panel is a placeholder to demonstrate the UI and animation of the Gemini-powered overviews in Google Search.
+            {bio ? (
+              <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
+                {bio}
+              </span>
+            ) : (
+              <>
+                <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
+                  This is an AI-generated overview for the "I'm Feeling Lucky" search.
+                </span>
+                The content is dynamically created based on your search query using advanced language models to provide relevant and contextual information. This panel is a placeholder to demonstrate the UI and animation of the Gemini-powered overviews in Google Search.
+              </>
+            )}
           </p>
 
           {isExpanded && (
