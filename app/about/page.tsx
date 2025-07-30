@@ -15,7 +15,7 @@ export default function AboutPage() {
           {/* Left side - Search results */}
           <div className="flex-1 max-w-2xl">
             <div className="mb-6">
-              <AiOverviewPanel bio="This is a placeholder for a bio. It can be a brief introduction about yourself, your interests, and your professional background." />
+              <AiOverviewPanel bio="Hi, I’m Alan—a data & AI enthusiast who loves building things that make business sense (and sometimes just for fun). I thrive where tech meets real-world impact: from wrangling SQL and LLMs to solving actual business problems, especially in finance and risk. I’m known for rapid prototyping, a knack for creative solutions, and an endless curiosity for how things work under the hood. I enjoy bridging the gap between technical and non-technical teams, and I’m always chasing the next cool tool or framework. If you like coffee-fueled brainstorms and clever code, let’s connect!" />
             </div>
             <div className="text-sm text-gray-500 mb-4">About 3 results (0.25 seconds)</div>
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
             <div className="border border-gray-200 rounded-lg p-4 bg-white">
               <div className="text-center mb-4">
                 <Image
-                  src="/images/digital_alan.jpg"
+                  src="/images/alan.jpg"
                   alt="Alan Wong"
                   width={160}
                   height={200}
@@ -94,6 +94,7 @@ export default function AboutPage() {
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Python</span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">SQL</span>
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Go</span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">LangChain</span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Power BI</span>
                   <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">Airflow</span>
