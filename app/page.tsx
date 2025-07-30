@@ -1,23 +1,51 @@
 "use client"
-import { Search, Mic, Camera } from "lucide-react"
-import type React from "react"
+import { callGeminiApi } from "@/lib/gemini";
+import { Search, Mic, Camera } from "lucide-react";
+import { ApiKeyDialog } from "@/components/ui/api-key-dialog";
+import { useState, useEffect } from "react"
 import Image from "next/image"
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import TopRightNav from "@/components/top-right-nav";
 import Footer from "@/components/footer";
 
 export default function HomePage() {
   const router = useRouter()
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
+  const [useGemini, setUseGemini] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [geminiResult, setGeminiResult] = useState<string | null>(null);
+  const [showApiKeyDialog, setShowApiKeyDialog] = useState(false);
+  const [geminiApiKey, setGeminiApiKey] = useState<string | null>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+  useEffect(() => {
+    if (useGemini && !geminiApiKey) {
+      setShowApiKeyDialog(true);
+    } else if (!useGemini) {
+      setGeminiApiKey(null);
+      setShowApiKeyDialog(false);
     }
-  }
+  }, [useGemini, geminiApiKey]);
+
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+
+    if (useGemini) {
+      if (!geminiApiKey) {
+        setShowApiKeyDialog(true);
+        return;
+      }
+      setIsLoading(true);
+      const result = await callGeminiApi(searchQuery, geminiApiKey);
+      localStorage.setItem('geminiResult', result);
+      setIsLoading(false);
+      // Navigate to a new page to display the result
+      router.push("/gemini-result");
+    } else {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-[#202124] antialiased">
@@ -75,7 +103,28 @@ export default function HomePage() {
         </div>
 
         {/* Language options */}
-        <div className="text-xs text-[#5f6368]">alanwong.dev offered in: 繁體中文 简体中文</div>
+        <div className="text-xs text-[#5f6368]">alanwong.dev not offered in: 繁體中文 简体中文</div>
+
+        {/* Feature Flag */}
+        <div className="mt-4 flex items-center">
+          <input
+            type="checkbox"
+            id="use-gemini"
+            checked={useGemini}
+            onChange={(e) => setUseGemini(e.target.checked)}
+            className="mr-2"
+          />
+          <label htmlFor="use-gemini" className="text-sm text-gray-600">Enable Gemini Search (Insecure Demo)</label>
+        </div>
+
+        <ApiKeyDialog
+          isOpen={showApiKeyDialog}
+          onClose={() => setShowApiKeyDialog(false)}
+          onSave={(key) => {
+            setGeminiApiKey(key);
+            setShowApiKeyDialog(false);
+          }}
+        />
       </main>
       <Footer />
     </div>
