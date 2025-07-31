@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MobileNav } from "./mobile-nav";
-import { NavLinks } from "./NavLinks";
+import { NavLinks } from "./nav-links";
 
 interface HeaderProps {
   children?: ReactNode;

@@ -1,24 +1,38 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { callGeminiApi } from '@/lib/gemini';
 
-export default function GeminiResultPage() {
-  const [result, setResult] = useState<string | null>(null);
+function GeminiResultContent() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q');
+  const apiKey = searchParams.get('apiKey');
+
+  const [result, setResult] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const storedResult = localStorage.getItem('geminiResult');
-      if (storedResult) {
-        setResult(storedResult);
-        setIsLoading(false);
-      }
-    }, 200); // Check for updates every 200ms
+    if (!query || !apiKey) {
+      setError('Missing search query or API key.');
+      setIsLoading(false);
+      return;
+    }
 
-    return () => clearInterval(interval);
-  }, []);
+    setIsLoading(true);
+    callGeminiApi(query, apiKey, (chunk) => {
+      setResult((prevResult) => prevResult + chunk);
+    }).then(() => {
+      setIsLoading(false);
+    }).catch((e) => {
+      setError(e.message);
+      setIsLoading(false);
+    });
+
+  }, [query, apiKey]);
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
@@ -30,20 +44,22 @@ export default function GeminiResultPage() {
             <p>This content is AI-generated HTML. Rendering untrusted HTML can be a security risk. Use with caution.</p>
           </div>
           <h1 className="text-2xl font-semibold text-gray-900 mb-6">Gemini Search Result</h1>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <div className="prose max-w-none">
-              {result ? (
-                <div dangerouslySetInnerHTML={{ __html: result }} />
-              ) : (
-                <p>No result found. Please try another search.</p>
-              )}
-            </div>
-          )}
+          {isLoading && !result && <p>Loading...</p>}
+          {error && <p className="text-red-500">{error}</p>}
+          <div className="prose max-w-none">
+            <div dangerouslySetInnerHTML={{ __html: result }} />
+          </div>
         </div>
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function GeminiResultPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GeminiResultContent />
+    </Suspense>
   );
 }

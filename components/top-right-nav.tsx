@@ -1,5 +1,5 @@
 import { MobileNav } from "./mobile-nav";
-import { NavLinks } from "./NavLinks";
+import { NavLinks } from "./nav-links";
 
 export default function TopRightNav() {
   return (
