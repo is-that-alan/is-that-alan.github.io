@@ -46,8 +46,7 @@ export async function callGeminiApi(prompt: string, apiKey: string, onChunk: (ch
         const parsedChunk = JSON.parse(chunk);
         if (parsedChunk.candidates && parsedChunk.candidates.length > 0 && parsedChunk.candidates[0].content && parsedChunk.candidates[0].content.parts && parsedChunk.candidates[0].content.parts.length > 0) {
           const newContent = parsedChunk.candidates[0].content.parts[0].text;
-          accumulatedContent += newContent;
-          onChunk(accumulatedContent);
+          onChunk(newContent);
         }
       } catch (e) {
         // Handle cases where the chunk is not a complete JSON object yet

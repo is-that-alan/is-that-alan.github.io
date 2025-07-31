@@ -21,11 +21,13 @@ export default function HomePage() {
   const [geminiApiKey, setGeminiApiKey] = useState<string | null>(null);
 
   useEffect(() => {
-    if (useGemini && !geminiApiKey) {
-      setShowApiKeyDialog(true);
-    } else if (!useGemini) {
-      setGeminiApiKey(null);
-      setShowApiKeyDialog(false);
+    if (typeof window !== 'undefined') {
+      if (useGemini && !geminiApiKey) {
+        setShowApiKeyDialog(true);
+      } else if (!useGemini) {
+        setGeminiApiKey(null);
+        setShowApiKeyDialog(false);
+      }
     }
   }, [useGemini, geminiApiKey]);
 
@@ -38,14 +40,7 @@ export default function HomePage() {
         setShowApiKeyDialog(true);
         return;
       }
-      setIsLoading(true);
-      localStorage.setItem('geminiResult', ''); // Clear previous result
-      callGeminiApi(searchQuery, geminiApiKey, (chunk) => {
-        localStorage.setItem('geminiResult', chunk);
-      }).then(() => {
-        setIsLoading(false);
-        router.push("/gemini-result");
-      });
+      router.push(`/gemini-result?q=${encodeURIComponent(searchQuery.trim())}&apiKey=${encodeURIComponent(geminiApiKey)}`);
     } else {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     }
@@ -75,7 +70,7 @@ export default function HomePage() {
               placeholder=""
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-16 px-6 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[20px] text-[#202124] hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
+              className="w-full h-16 px-6 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[20px] text-[#202124] shadow-sm hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
             />
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
               <Mic className="w-6 h-6 text-[#5f6368] cursor-pointer hover:text-[#202124]" />
