@@ -16,6 +16,20 @@ export default function DrivePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedProject(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   const projects = [
     {
       name: "Deep Reinforcement Learning T-Rex",
@@ -24,6 +38,7 @@ export default function DrivePage() {
       previewImage: "/images/dino_run_demo.gif",
       description: "Training a reinforcement learning agent to play the Google Chrome dinosaur game.",
       tags: ["deep learning", "reinforcement learning", "AI", "game", "python"],
+      markdownPath: "/markdown/deep-reinforcement-learning-t-rex.md",
     },
     {
       name: "Power BI Market Dashboard",
@@ -32,6 +47,7 @@ export default function DrivePage() {
       previewImage: "/images/PBI_snapshot.png",
       description: "A Power BI dashboard for visualizing market information and generating daily reports.",
       tags: ["Power BI", "data visualization", "business intelligence", "finance"],
+      markdownPath: "/markdown/power-bi-market-dashboard.md",
     },
     {
       name: "Streamlit Financial Dashboard",
@@ -40,6 +56,7 @@ export default function DrivePage() {
       previewImage: "/images/streamlist_snapshot.png",
       description: "A Streamlit dashboard for downloading and visualizing market data.",
       tags: ["Streamlit", "python", "finance", "dashboard", "data analysis"],
+      markdownPath: "/markdown/streamlit-financial-dashboard.md",
     },
     {
       name: "Yelp Recommendation System",
@@ -48,6 +65,7 @@ export default function DrivePage() {
       previewImage: "/images/yelp eda.png",
       description: "An end-to-end data science project from preliminary studies to deployment.",
       tags: ["recommendation system", "machine learning", "python", "data science", "NLP"],
+      markdownPath: "/markdown/yelp-recommendation-system.md",
     },
     {
       name: "Agentic Q&A Chatbot",
@@ -56,6 +74,7 @@ export default function DrivePage() {
       previewImage: "/images/agentic_q&a_chatbot.png",
       description: "An agentic Q&A chatbot for real estate acquisition.",
       tags: ["chatbot", "AI", "NLP", "agentic AI", "LLM"],
+      markdownPath: "/markdown/agentic-q-a-chatbot.md",
     },
     {
       name: "Adaptive AI Prompting Framework",
@@ -64,6 +83,7 @@ export default function DrivePage() {
       previewImage: "/images/adaptive_ai_prompting_framework.png",
       description: "An adaptive AI prompting framework for improving business results.",
       tags: ["AI", "prompt engineering", "machine learning", "framework"],
+      markdownPath: "/markdown/adaptive-ai-prompting-framework.md",
     },
     {
       name: "Risk Aggregation Engine",
@@ -72,6 +92,7 @@ export default function DrivePage() {
       previewImage: "/images/risk_aggregation_engine.png",
       description: "A risk aggregation engine for incorporating additive and non-additive metrics.",
       tags: ["finance", "risk management", "data engineering", "SQL"],
+      markdownPath: "/markdown/risk-aggregation-engine.md",
     },
     {
       name: "New Placeholder Project",
@@ -80,6 +101,7 @@ export default function DrivePage() {
       previewImage: "/images/new_placeholder_project.png",
       description: "A placeholder for a future project.",
       tags: ["placeholder", "future", "development"],
+      markdownPath: "/markdown/new-placeholder-project.md",
     },
     {
       name: "Marketing Campaign Analysis",
