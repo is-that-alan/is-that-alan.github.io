@@ -9,10 +9,12 @@ import { useRouter } from "next/navigation";
 import TopRightNav from "@/components/top-right-nav";
 import Footer from "@/components/footer";
 
+const GEMINI_SEARCH_ENABLED = false; // Feature flag for Gemini search
+
 export default function HomePage() {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("");
-  const [useGemini, setUseGemini] = useState(false);
+  const [useGemini, setUseGemini] = useState(GEMINI_SEARCH_ENABLED);
   const [isLoading, setIsLoading] = useState(false);
   const [geminiResult, setGeminiResult] = useState<string | null>(null);
   const [showApiKeyDialog, setShowApiKeyDialog] = useState(false);
@@ -37,11 +39,13 @@ export default function HomePage() {
         return;
       }
       setIsLoading(true);
-      const result = await callGeminiApi(searchQuery, geminiApiKey);
-      localStorage.setItem('geminiResult', result);
-      setIsLoading(false);
-      // Navigate to a new page to display the result
-      router.push("/gemini-result");
+      localStorage.setItem('geminiResult', ''); // Clear previous result
+      callGeminiApi(searchQuery, geminiApiKey, (chunk) => {
+        localStorage.setItem('geminiResult', chunk);
+      }).then(() => {
+        setIsLoading(false);
+        router.push("/gemini-result");
+      });
     } else {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     }
@@ -121,25 +125,29 @@ export default function HomePage() {
             </span>
           </div>
         {/* Feature Flag */}
-        <div className="mt-4 flex items-center">
-          <input
-            type="checkbox"
-            id="use-gemini"
-            checked={useGemini}
-            onChange={(e) => setUseGemini(e.target.checked)}
-            className="mr-2"
-          />
-          <label htmlFor="use-gemini" className="text-sm text-gray-600">Enable Gemini Search (Warning: Insecure Demo)</label>
-        </div>
+        {GEMINI_SEARCH_ENABLED && (
+          <div className="mt-4 flex items-center">
+            <input
+              type="checkbox"
+              id="use-gemini"
+              checked={useGemini}
+              onChange={(e) => setUseGemini(e.target.checked)}
+              className="mr-2"
+            />
+            <label htmlFor="use-gemini" className="text-sm text-gray-600">Enable Gemini Search (Warning: Insecure Demo)</label>
+          </div>
+        )}
 
-        <ApiKeyDialog
-          isOpen={showApiKeyDialog}
-          onClose={() => setShowApiKeyDialog(false)}
-          onSave={(key) => {
-            setGeminiApiKey(key);
-            setShowApiKeyDialog(false);
-          }}
-        />
+        {GEMINI_SEARCH_ENABLED && (
+          <ApiKeyDialog
+            isOpen={showApiKeyDialog}
+            onClose={() => setShowApiKeyDialog(false)}
+            onSave={(key) => {
+              setGeminiApiKey(key);
+              setShowApiKeyDialog(false);
+            }}
+          />
+        )}
       </main>
       <Footer />
     </div>
