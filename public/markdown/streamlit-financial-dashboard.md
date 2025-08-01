@@ -1,3 +1,3 @@
-# Hi
+# Streamlit Financial Dashboard
 
-How are you
+A Streamlit dashboard for downloading and visualizing market data.

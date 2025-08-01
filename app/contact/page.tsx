@@ -11,14 +11,14 @@ export default function ContactPage() {
 
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-normal text-gray-700 mb-4">
-            <span className="text-blue-500">C</span>
-            <span className="text-red-500">o</span>
-            <span className="text-yellow-500">n</span>
-            <span className="text-blue-500">t</span>
-            <span className="text-green-500">a</span>
-            <span className="text-red-500">c</span>
-            <span className="text-blue-500">t</span>
+          <h1 className="text-4xl font-google font-semibold mb-4 tracking-normal">
+            <span className="text-[#4285F4]">C</span>
+            <span className="text-[#EA4335]">o</span>
+            <span className="text-[#FBBC05]">n</span>
+            <span className="text-[#4285F4]">t</span>
+            <span className="text-[#34A853]">a</span>
+            <span className="text-[#EA4335]">c</span>
+            <span className="text-[#4285F4]">t</span>
           </h1>
           <p className="text-gray-600">Get in touch with me</p>
         </div>

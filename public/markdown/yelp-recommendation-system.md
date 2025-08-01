@@ -1,3 +1,3 @@
-# Hi
+# Yelp Recommendation System
 
-How are you
+An end-to-end data science project from preliminary studies to deployment.
