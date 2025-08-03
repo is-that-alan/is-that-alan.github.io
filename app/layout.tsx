@@ -23,8 +23,8 @@ html {
   --font-mono: ${GeistMono.variable};
 }
         `}</style>
-        <link rel="icon" href="/images/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/images/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       <body>{children}</body>
     </html>

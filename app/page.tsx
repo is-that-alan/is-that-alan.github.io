@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 
 import { useRouter } from "next/navigation";
+import { MobileNav } from "@/components/mobile-nav";
 import TopRightNav from "@/components/top-right-nav";
 import Footer from "@/components/footer";
 
@@ -48,6 +49,9 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-[#202124] antialiased">
+      <div className="md:hidden absolute top-4 left-4">
+        <MobileNav />
+      </div>
       <TopRightNav />
 
       <main className="flex flex-col items-center justify-center flex-1">
@@ -63,21 +67,21 @@ export default function HomePage() {
         </div>
 
         {/* Search Bar */}
-        <form onSubmit={handleSearch} className="w-full max-w-[90%] md:max-w-[782px] px-4 md:px-0 mb-6">
+        <form onSubmit={handleSearch} className="w-full max-w-[90%] md:max-w-5xl px-4 md:px-0 mb-6">
           <div className="relative">
+            <button type="submit" className="absolute left-6 top-1/2 transform -translate-y-1/2">
+              <Search className="w-5 h-5 text-[#5f6368] cursor-pointer" />
+            </button>
             <input
               type="text"
               placeholder=""
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-16 px-6 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[20px] text-[#202124] shadow-sm hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
+              className="w-full h-16 pl-14 pr-24 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[20px] text-[#202124] shadow-sm hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
             />
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
+            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
               <Mic className="w-6 h-6 text-[#5f6368] cursor-pointer hover:text-[#202124]" />
               <Camera className="w-6 h-6 text-[#5f6368] cursor-pointer hover:text-[#202124]" />
-              <button type="submit">
-                <Search className="w-5 h-5 text-[#5f6368] cursor-pointer" />
-              </button>
             </div>
           </div>
         </form>
