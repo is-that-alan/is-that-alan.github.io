@@ -9,11 +9,12 @@ import FilePreviewCard from "@/components/file-preview-card";
 import ProjectPreview from "@/components/project-preview";
 import { Folder, Menu } from "lucide-react";
 import ProjectSearchLoader from "@/components/project-search-loader";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
 
 export default function DriveClient({ projects: initialProjects }: { projects: any[] }) {
   const [projects, setProjects] = useState(initialProjects);
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearching, setIsSearching] = useState(false);
 
@@ -53,15 +54,10 @@ export default function DriveClient({ projects: initialProjects }: { projects: a
   return (
     <div className="h-screen flex flex-col bg-white">
       <Header className="bg-gray-50 border-b">
-        <div className="md:hidden">
-          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-            <Menu className="w-6 h-6" />
-          </button>
-        </div>
         <DriveSearchBar searchTerm={searchTerm} onSearch={handleSearch} />
       </Header>
       <div className="flex flex-1 overflow-hidden">
-        <div className={`${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
+        <div className={`hidden md:block`}>
           <DriveSidebar />
         </div>
         <main className="flex-1 p-4 md:p-8 overflow-y-auto">
@@ -112,7 +108,7 @@ export default function DriveClient({ projects: initialProjects }: { projects: a
                   </div>
                 ))}
               </div>
-            </>
+            </> 
           )}
         </main>
       </div>
