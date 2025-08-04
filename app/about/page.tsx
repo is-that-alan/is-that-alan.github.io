@@ -80,11 +80,11 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <p className="font-semibold">University of Bath</p>
-                    <p className="text-gray-600">MSc Computer Science (Completed)</p>
+                    <p className="text-gray-600">MSc Computer Science (2020)</p>
                   </div>
                   <div>
                     <p className="font-semibold">University of Bristol</p>
-                    <p className="text-gray-600">BSc Economics (Completed)</p>
+                    <p className="text-gray-600">BSc Economics (2019)</p>
                   </div>
                 </div>
               </div>
