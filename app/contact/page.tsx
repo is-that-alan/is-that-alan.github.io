@@ -5,9 +5,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react"
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
-      <Header>
-        <GoogleSearchBar />
-      </Header>
+      <Header />
 
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
