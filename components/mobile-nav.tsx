@@ -9,7 +9,8 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
@@ -26,6 +27,12 @@ export function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="pr-0">
+        <VisuallyHidden>
+          <SheetTitle>Mobile Navigation</SheetTitle>
+          <SheetDescription>
+            A list of links to navigate the site.
+          </SheetDescription>
+        </VisuallyHidden>
         <MobileLink
           href="/"
           className="flex items-center"

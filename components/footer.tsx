@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="absolute bottom-0 w-full bg-[#f2f2f2] text-sm md:text-xl text-[#70757a]">
+      <footer className="absolute bottom-0 w-full bg-[#f2f2f2] text-xs md:text-lg text-[#70757a]">
         <div className="px-8 py-4 border-b border-[#dadce0]">
           <p>Hong Kong</p>
         </div>
