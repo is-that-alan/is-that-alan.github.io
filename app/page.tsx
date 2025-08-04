@@ -6,8 +6,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 
 import { useRouter } from "next/navigation";
-import { MobileNav } from "@/components/mobile-nav";
-import TopRightNav from "@/components/top-right-nav";
+import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 const GEMINI_SEARCH_ENABLED = false; // Feature flag for Gemini search
@@ -48,13 +47,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-[#202124] antialiased">
-      <div className="md:hidden absolute top-4 left-4">
-        <MobileNav />
-      </div>
-      <TopRightNav />
-
-      <main className="flex flex-col items-center justify-center flex-1">
+    <div className="min-h-screen flex flex-col bg-white text-[#202124]">
+      <Header showLogo={false} />
+      <main className="flex-grow flex flex-col items-center justify-center">
         {/* Logo */}
         <div className="mb-8">
           <Image
