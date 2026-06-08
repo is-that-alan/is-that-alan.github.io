@@ -14,6 +14,10 @@ export const siteConfig = {
       href: "/about",
     },
     {
+      title: "Achievements",
+      href: "/achievements",
+    },
+    {
       title: "Contact",
       href: "/contact",
     },

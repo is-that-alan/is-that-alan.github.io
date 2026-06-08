@@ -8,6 +8,16 @@ import html from 'remark-html';
 async function getProjects() {
   const projectsData = [
     {
+      name: "S&P 500 Sector Discovery (Text Analytics)",
+      type: "file",
+      category: "suggested",
+      previewImage: "/images/sp500-sector-text-analytics.png",
+      description:
+        "ISYE 6740 (Georgia Tech) final project: reproducing and challenging GICS sectors from Wikipedia text with TF-IDF, Truncated SVD, and clustering — 85.9% CV accuracy.",
+      tags: ["NLP", "TF-IDF", "clustering", "unsupervised learning", "finance", "Georgia Tech"],
+      markdownPath: "/markdown/sp500-sector-text-analytics.md",
+    },
+    {
       name: "Deep Reinforcement Learning T-Rex",
       type: "file",
       category: "suggested",
@@ -69,15 +79,6 @@ async function getProjects() {
       description: "A risk aggregation engine for incorporating additive and non-additive metrics.",
       tags: ["finance", "risk management", "data engineering", "SQL"],
       markdownPath: "/markdown/risk-aggregation-engine.md",
-    },
-    {
-      name: "New Placeholder Project",
-      type: "file",
-      category: "file",
-      previewImage: "/images/new_placeholder_project.png",
-      description: "A placeholder for a future project.",
-      tags: ["placeholder", "future", "development"],
-      markdownPath: "/markdown/new-placeholder-project.md",
     },
     {
       name: "Marketing Campaign Analysis",

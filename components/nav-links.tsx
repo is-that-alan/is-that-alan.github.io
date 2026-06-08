@@ -12,13 +12,10 @@ import {
   Linkedin,
   Github,
   FileText,
-  LayoutDashboard,
+  Trophy,
   Bot,
   Gamepad2,
-  Fingerprint,
   Braces,
-  Regex,
-  Shuffle,
   KeyRound,
   Timer,
   FileCode,
@@ -27,20 +24,17 @@ import {
 const primaryMenuItems = [
   { href: "/about", icon: User, text: "About" },
   { href: "/projects", icon: Folder, text: "Projects" },
+  { href: "/achievements", icon: Trophy, text: "Achievements" },
   { href: "/contact", icon: Mail, text: "Contact" },
   { href: "https://www.linkedin.com/in/alanwth/", icon: Linkedin, text: "LinkedIn" },
   { href: "https://github.com/is-that-alan", icon: Github, text: "GitHub" },
   { href: "/resume.pdf", icon: FileText, text: "Résumé" },
-  { href: "/projects", icon: LayoutDashboard, text: "Dashboards" },
   { href: "/projects", icon: Bot, text: "AI Agents" },
   { href: "/projects", icon: Gamepad2, text: "RL Playground" },
 ];
 
 const devMenuItems = [
-  { href: "/tools/uuid-generator", icon: Fingerprint, text: "UUID Generator" },
   { href: "/tools/json-beautifier", icon: Braces, text: "JSON Beautifier" },
-  { href: "/tools/regex-tester", icon: Regex, text: "Regex Tester" },
-  { href: "/tools/random-picker", icon: Shuffle, text: "Random Picker" },
   { href: "/tools/password-generator", icon: KeyRound, text: "Password Gen" },
   { href: "/tools/timer", icon: Timer, text: "Timer" },
   { href: "/tools/markdown-renderer", icon: FileCode, text: "Markdown" },
@@ -56,6 +50,9 @@ export function NavLinks() {
       </Link>
       <Link href="/about" className="hover:underline">
         About
+      </Link>
+      <Link href="/achievements" className="hover:underline">
+        Achievements
       </Link>
       <Link href="/contact" className="hover:underline">
         Contact

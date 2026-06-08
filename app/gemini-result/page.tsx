@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { callGeminiApi } from '@/lib/gemini';
+import { callGemini } from '@/lib/gemini';
 
 function GeminiResultContent() {
   const searchParams = useSearchParams();
@@ -23,7 +23,7 @@ function GeminiResultContent() {
     }
 
     setIsLoading(true);
-    callGeminiApi(query, apiKey, (chunk) => {
+    callGemini(query, (chunk) => {
       setResult((prevResult) => prevResult + chunk);
     }).then(() => {
       setIsLoading(false);
