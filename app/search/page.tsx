@@ -10,6 +10,7 @@ import CannedOverview from "@/components/canned-overview";
 import LiveOverview from "@/components/live-overview";
 import { siteIndex } from "@/lib/site-index";
 import { searchSite } from "@/lib/search";
+import { PROFILE_CONTEXT } from "@/lib/profile";
 import { matchOverview, fallbackOverview, sanitizeQuery } from "@/lib/ai-overview";
 import { AI_ANSWER_ENABLED } from "@/lib/ai-config";
 
@@ -34,14 +35,10 @@ function SearchResults() {
   // when the user searched but nothing strong matched.
   const overviewToShow = overview ?? (query && !isLucky ? fallbackOverview : null);
 
-  // Context handed to the live model: the curated facts for the matched intent
-  // (so even "what does alan do" is grounded) plus the top matched pages.
-  const ragContext = useMemo(() => {
-    const parts: string[] = [];
-    if (overviewToShow) parts.push(overviewToShow.paragraphs.join(" "));
-    parts.push(...results.slice(0, 4).map((d) => `${d.title}: ${d.description}`));
-    return parts.join("\n");
-  }, [overviewToShow, results]);
+  // The whole knowledge base is tiny, so we hand the model everything about
+  // Alan on every query rather than retrieving snippets — no question can
+  // miss its context. (Fuse is still used for the ranked results list below.)
+  const ragContext = PROFILE_CONTEXT;
 
   return (
     <div className="min-h-screen bg-white text-[#202124]">
