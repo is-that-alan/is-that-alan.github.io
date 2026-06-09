@@ -30,9 +30,12 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          # Set repo variable AI_WORKER_URL to enable the live AI Overview.
-          # Leave it unset and the site uses the static canned overview.
+          # Live AI Overview config. Set these as repo Variables (Settings →
+          # Secrets and variables → Actions → Variables). All optional — with
+          # none set, the site uses the static canned overview.
           NEXT_PUBLIC_AI_WORKER_URL: ${{ vars.AI_WORKER_URL }}
+          NEXT_PUBLIC_GEMINI_API_KEY: ${{ vars.GEMINI_API_KEY }}
+          NEXT_PUBLIC_OPENROUTER_API_KEY: ${{ vars.OPENROUTER_API_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

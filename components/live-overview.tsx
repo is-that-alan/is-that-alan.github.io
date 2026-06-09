@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FlaskConical, ArrowRight, Sparkles } from "lucide-react";
 import CannedOverview from "@/components/canned-overview";
-import { AI_WORKER_URL, AI_ANSWER_ENABLED } from "@/lib/ai-config";
+import { AI_ANSWER_ENABLED } from "@/lib/ai-config";
+import { generateAnswer } from "@/lib/ai-client";
 import type { OverviewIntent, OverviewLink } from "@/lib/ai-overview";
 
 type Intent = OverviewIntent | { paragraphs: string[]; related: OverviewLink[] };
@@ -30,24 +31,12 @@ export default function LiveOverview({ query, context, intent }: LiveOverviewPro
     let cancelled = false;
     setStatus("loading");
 
-    fetch(AI_WORKER_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, context }),
-    })
-      .then(async (r) => {
-        if (!r.ok) throw new Error(`worker ${r.status}`);
-        return r.json();
-      })
-      .then((data) => {
+    generateAnswer(query, context)
+      .then((res) => {
         if (cancelled) return;
-        if (data?.answer) {
-          setAnswer(data.answer);
-          setProvider(data.provider || "AI");
-          setStatus("done");
-        } else {
-          setStatus("error");
-        }
+        setAnswer(res.answer);
+        setProvider(res.provider);
+        setStatus("done");
       })
       .catch(() => {
         if (!cancelled) setStatus("error");
