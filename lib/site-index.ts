@@ -15,8 +15,14 @@ const staticDocs: SearchDoc[] = [
     url: "/about",
     displayUrl: "alanwong.dev › about",
     description:
-      "Data scientist with ~5 years leading full-cycle AI and quantitative projects across investment analytics, QIS risk, and agentic AI. Works with the Group CEO on firm-wide AI for Nan Fung's Biotech VC and family-office arms.",
-    keywords: ["bio", "who is alan", "profile", "data scientist", "summary", "intro", "nan fung", "ceo", "biotech", "family office"],
+      "Data scientist with ~5 years leading full-cycle AI and quantitative projects across investment analytics, QIS risk, and agentic AI. Works with the Group CEO on firm-wide AI for Nan Fung's Biotech VC and family-office arms. Skilled in Python, SQL, TypeScript, LLMs, RAG, LangChain, PyTorch, FastAPI, and AWS.",
+    keywords: [
+      "bio", "who is alan", "profile", "data scientist", "summary", "intro", "nan fung",
+      "ceo", "biotech", "family office", "skills", "skill", "stack", "python", "sql",
+      "typescript", "javascript", "llm", "llms", "rag", "agentic", "langchain", "pytorch",
+      "scikit", "fastapi", "aws", "docker", "machine learning", "ml", "ai", "nlp",
+      "forecasting", "education", "georgia tech", "bath", "bristol", "msc",
+    ],
   },
   {
     title: "Achievements & Recognition — Alan Wong",

@@ -3,26 +3,15 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo, Suspense } from "react";
 import Link from "next/link";
-import Fuse from "fuse.js";
 
 import Header from "@/components/header";
 import GoogleSearchBar from "@/components/google-search-bar";
 import CannedOverview from "@/components/canned-overview";
 import LiveOverview from "@/components/live-overview";
-import { siteIndex, type SearchDoc } from "@/lib/site-index";
+import { siteIndex } from "@/lib/site-index";
+import { searchSite } from "@/lib/search";
 import { matchOverview, fallbackOverview, sanitizeQuery } from "@/lib/ai-overview";
 import { AI_ANSWER_ENABLED } from "@/lib/ai-config";
-
-const fuse = new Fuse<SearchDoc>(siteIndex, {
-  includeScore: true,
-  threshold: 0.45,
-  ignoreLocation: true,
-  keys: [
-    { name: "title", weight: 2 },
-    { name: "description", weight: 1 },
-    { name: "keywords", weight: 1.5 },
-  ],
-});
 
 function SearchResults() {
   const searchParams = useSearchParams();
@@ -32,8 +21,8 @@ function SearchResults() {
   const isLucky = query.toLowerCase().includes("feeling lucky");
 
   const results = useMemo(() => {
-    if (!query || isLucky) return siteIndex.map((doc) => ({ item: doc }));
-    return fuse.search(query);
+    if (!query || isLucky) return siteIndex;
+    return searchSite(query);
   }, [query, isLucky]);
 
   const overview = useMemo(() => {
@@ -43,18 +32,16 @@ function SearchResults() {
 
   // Show the canned overview when an intent matched, or a friendly fallback
   // when the user searched but nothing strong matched.
-  const overviewToShow =
-    overview ?? (query && !isLucky && results.length === 0 ? fallbackOverview : overview);
+  const overviewToShow = overview ?? (query && !isLucky ? fallbackOverview : null);
 
-  // Context handed to the live model: the top matched pages from our own index.
-  const ragContext = useMemo(
-    () =>
-      results
-        .slice(0, 4)
-        .map(({ item }) => `${item.title}: ${item.description}`)
-        .join("\n"),
-    [results]
-  );
+  // Context handed to the live model: the curated facts for the matched intent
+  // (so even "what does alan do" is grounded) plus the top matched pages.
+  const ragContext = useMemo(() => {
+    const parts: string[] = [];
+    if (overviewToShow) parts.push(overviewToShow.paragraphs.join(" "));
+    parts.push(...results.slice(0, 4).map((d) => `${d.title}: ${d.description}`));
+    return parts.join("\n");
+  }, [overviewToShow, results]);
 
   return (
     <div className="min-h-screen bg-white text-[#202124]">
@@ -81,7 +68,7 @@ function SearchResults() {
         )}
 
         <div className="space-y-7">
-          {results.map(({ item }) => (
+          {results.map((item) => (
             <div key={item.url}>
               <div className="text-sm text-[#0b8043] mb-0.5">{item.displayUrl}</div>
               <h3 className="text-xl text-[#1a0dab] hover:underline mb-1">
