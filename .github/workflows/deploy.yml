@@ -23,6 +23,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Set repo variable AI_WORKER_URL to enable the live AI Overview.
+          # Leave it unset and the site uses the static canned overview.
+          NEXT_PUBLIC_AI_WORKER_URL: ${{ vars.AI_WORKER_URL }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

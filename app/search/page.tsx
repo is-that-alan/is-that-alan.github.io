@@ -8,8 +8,10 @@ import Fuse from "fuse.js";
 import Header from "@/components/header";
 import GoogleSearchBar from "@/components/google-search-bar";
 import CannedOverview from "@/components/canned-overview";
+import LiveOverview from "@/components/live-overview";
 import { siteIndex, type SearchDoc } from "@/lib/site-index";
 import { matchOverview, fallbackOverview, sanitizeQuery } from "@/lib/ai-overview";
+import { AI_ANSWER_ENABLED } from "@/lib/ai-config";
 
 const fuse = new Fuse<SearchDoc>(siteIndex, {
   includeScore: true,
@@ -44,6 +46,16 @@ function SearchResults() {
   const overviewToShow =
     overview ?? (query && !isLucky && results.length === 0 ? fallbackOverview : overview);
 
+  // Context handed to the live model: the top matched pages from our own index.
+  const ragContext = useMemo(
+    () =>
+      results
+        .slice(0, 4)
+        .map(({ item }) => `${item.title}: ${item.description}`)
+        .join("\n"),
+    [results]
+  );
+
   return (
     <div className="min-h-screen bg-white text-[#202124]">
       <Header>
@@ -60,7 +72,11 @@ function SearchResults() {
 
         {overviewToShow && (
           <div className="mb-8">
-            <CannedOverview intent={overviewToShow} />
+            {AI_ANSWER_ENABLED ? (
+              <LiveOverview query={query} context={ragContext} intent={overviewToShow} />
+            ) : (
+              <CannedOverview intent={overviewToShow} />
+            )}
           </div>
         )}
 

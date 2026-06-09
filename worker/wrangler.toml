@@ -1,0 +1,12 @@
+name = "alanwong-ai-overview"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://alanwong.dev,http://localhost:3000"
+GEMINI_MODEL = "gemini-2.5-flash"
+OPENROUTER_MODEL = "google/gemma-4-31b-it:free"
+
+# Secrets are NOT stored here. Set them with:
+#   wrangler secret put GEMINI_API_KEY
+#   wrangler secret put OPENROUTER_API_KEY
