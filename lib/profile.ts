@@ -29,9 +29,7 @@ const EDUCATION =
 
 const ACHIEVEMENTS =
   "Achievements — Champion of the AWS AI League Hong Kong (2025), won a live real-time model " +
-  "fine-tuning competition at AWS TechFest. Judging panellist for the HKU Hack4SGD hackathon (2024). " +
-  "Certifications: Microsoft Azure Fundamentals (AZ-900) and Azure AI Fundamentals (AI-900), " +
-  "DeepLearning.AI TensorFlow Developer, IBM Data Science Professional Certificate.";
+  "fine-tuning competition at AWS TechFest. Judging panellist for the HKU Hack4SGD hackathon (2024).";
 
 const PROJECTS =
   "Projects — 'Discovering Hidden Sector Relationships Among S&P 500 Companies' (Georgia Tech " +

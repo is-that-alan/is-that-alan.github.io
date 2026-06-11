@@ -72,8 +72,7 @@ export default function AboutPage() {
                   <Link href="/achievements">Achievements &amp; Recognition — Alan Wong</Link>
                 </h3>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  AWS AI League Hong Kong Champion (2025), HKU Hack4SGD judging panellist (2024), and a stack of
-                  AI / cloud certifications.
+                  AWS AI League Hong Kong Champion (2025) and HKU Hack4SGD judging panellist (2024).
                 </p>
               </div>
             </div>

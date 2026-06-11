@@ -70,10 +70,10 @@ export const intents: OverviewIntent[] = [
   },
   {
     id: "achievements",
-    keywords: ["achievement", "achievements", "award", "awards", "champion", "win", "won", "winner", "judge", "judging", "hackathon", "recognition", "certifications", "certificate"],
+    keywords: ["achievement", "achievements", "award", "awards", "champion", "win", "won", "winner", "judge", "judging", "hackathon", "recognition"],
     paragraphs: [
       "Alan was the Champion of the AWS AI League Hong Kong (2025), winning a live, real-time model fine-tuning competition at AWS TechFest.",
-      "He has also served as a judging panellist for the HKU Hack4SGD hackathon (2024), and holds certifications across Microsoft Azure (Fundamentals & AI), DeepLearning.AI TensorFlow Developer, and IBM Data Science.",
+      "He has also served as a judging panellist for the HKU Hack4SGD hackathon (2024), evaluating sustainability-focused teams on technical merit, impact, and feasibility.",
     ],
     related: [
       { label: "Achievements", url: "/achievements" },

@@ -29,8 +29,8 @@ const staticDocs: SearchDoc[] = [
     url: "/achievements",
     displayUrl: "alanwong.dev › achievements",
     description:
-      "AWS AI League Hong Kong Champion (2025, real-time fine-tuning), HKU Hack4SGD judging panellist (2024), and AI / cloud certifications.",
-    keywords: ["awards", "champion", "winner", "aws ai league", "hackathon", "judge", "judging panellist", "hack4sgd", "certifications", "azure", "tensorflow", "ibm", "recognition", "events"],
+      "AWS AI League Hong Kong Champion (2025, real-time fine-tuning) and HKU Hack4SGD judging panellist (2024).",
+    keywords: ["awards", "champion", "winner", "aws ai league", "hackathon", "judge", "judging panellist", "hack4sgd", "recognition", "events"],
   },
   {
     title: "Projects — Alan Wong",
