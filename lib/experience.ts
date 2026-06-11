@@ -116,6 +116,27 @@ export const experiences: ExperienceRole[] = [
     ],
     tags: ["Market Risk", "Power BI", "PCA", "BERT", "NLP"],
   },
+  {
+    slug: "student-hubs",
+    company: "Student Hubs (Bristol Hub)",
+    role: "Volunteer Python Tutor",
+    dateRange: "Feb 2019 – Apr 2019",
+    url: "https://www.studenthubs.org/",
+    displayUrl: "https://www.studenthubs.org",
+    location: "Bristol, United Kingdom",
+    summary:
+      "Volunteered as a Python tutor, preparing weekly materials and teaching teenagers the basic concepts of coding in Python.",
+    highlights: [
+      { metric: "3 mos", label: "Volunteer teaching" },
+      { metric: "Weekly", label: "Python sessions" },
+      { metric: "Education", label: "Community focus" },
+    ],
+    bullets: [
+      "Attended weekly sessions and prepared material to teach teenagers the basic concepts of coding in Python.",
+      "Introduced beginner-friendly Python concepts through practical examples and guided exercises.",
+    ],
+    tags: ["Volunteering", "Python", "Teaching", "Education", "Bristol Hub"],
+  },
 ];
 
 export function getExperience(slug: string): ExperienceRole | undefined {

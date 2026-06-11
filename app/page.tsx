@@ -1,5 +1,4 @@
 "use client"
-import { callGeminiApi } from "@/lib/gemini";
 import { Search, Mic, Camera } from "lucide-react";
 import { ApiKeyDialog } from "@/components/ui/api-key-dialog";
 import { useState, useEffect } from "react"
@@ -10,6 +9,8 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 
 const GEMINI_SEARCH_ENABLED = false; // Feature flag for Gemini search
+const AI_SNAPSHOT_QUERY =
+  "Give me a recruiter-ready snapshot of Alan Wong's strongest AI, data science, and leadership proof points.";
 
 export default function HomePage() {
   const router = useRouter()
@@ -31,8 +32,8 @@ export default function HomePage() {
     }
   }, [useGemini, geminiApiKey]);
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSearch = async (e?: React.FormEvent | React.MouseEvent) => {
+    e?.preventDefault();
     if (!searchQuery.trim()) return;
 
     if (useGemini) {
@@ -46,78 +47,74 @@ export default function HomePage() {
     }
   };
 
+  const handleLucky = () => {
+    const q = searchQuery.trim() || AI_SNAPSHOT_QUERY;
+    setSearchQuery(q);
+    router.push(`/search?q=${encodeURIComponent(q)}&lucky=1`);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#202124]">
-      <Header showLogo={false} />
-      <main className="flex-grow flex flex-col items-center justify-center">
-        {/* Logo */}
-        <div className="mb-8">
+      <Header showLogo={false} className="shrink-0" />
+      <main className="flex-1 flex flex-col">
+        <div className="shrink-0 box-border min-h-[150px] h-[calc(100vh-590px)] max-h-[300px] flex items-end justify-center">
           <Image
             src="/images/alanwong_dev_logo.png"
             alt="alanwong.dev"
-            width={600}
-            height={200}
-            className="w-full max-w-[300px] md:max-w-[600px] h-auto"
+            width={420}
+            height={72}
+            priority
+            className="h-auto w-[260px] sm:w-[340px] md:w-[420px]"
           />
         </div>
 
-        {/* Search Bar */}
-        <form onSubmit={handleSearch} className="w-full max-w-[90%] md:max-w-5xl px-4 md:px-0 mb-6">
-          <div className="relative">
-            <button type="submit" className="absolute left-6 top-1/2 transform -translate-y-1/2">
-              <Search className="w-5 h-5 text-[#5f6368] cursor-pointer" />
+        <form onSubmit={handleSearch} className="w-full max-w-[584px] px-4 sm:px-0 mx-auto pt-[52px]">
+          <div className="relative flex h-[46px] items-center rounded-[24px] border border-[#dfe1e5] bg-white shadow-[0_1px_6px_rgba(32,33,36,0.18)] hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]">
+            <button type="submit" aria-label="Search" className="absolute left-[13px] top-1/2 -translate-y-1/2 p-2">
+              <Search className="w-[18px] h-[18px] text-[#5f6368]" />
             </button>
             <input
               type="text"
               placeholder=""
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-16 pl-14 pr-24 border border-[#dfe1e5] rounded-full focus:border-[#4285f4] focus:shadow-[0_1px_6px_rgba(32,33,36,0.28)] outline-none text-[20px] text-[#202124] shadow-sm hover:shadow-[0_1px_6px_rgba(32,33,36,0.28)]"
+              className="h-full w-full rounded-[24px] bg-transparent pl-[50px] pr-[92px] text-[16px] text-[#202124] outline-none"
             />
-            <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex items-center space-x-3">
-              <Mic className="w-6 h-6 text-[#5f6368] cursor-pointer hover:text-[#202124]" />
-              <Camera className="w-6 h-6 text-[#5f6368] cursor-pointer hover:text-[#202124]" />
+            <div className="absolute right-[13px] top-1/2 flex -translate-y-1/2 items-center gap-1.5">
+              <button type="button" aria-label="Voice search" className="p-2">
+                <Mic className="w-[18px] h-[18px] text-[#5f6368] hover:text-[#202124]" />
+              </button>
+              <button type="button" aria-label="Search by image" className="p-2">
+                <Camera className="w-[18px] h-[18px] text-[#5f6368] hover:text-[#202124]" />
+              </button>
             </div>
           </div>
         </form>
 
-        {/* Buttons */}
-        <div className="flex space-x-2 mb-8">
+        <div className="flex justify-center gap-3 pt-[30px]">
           <button
             onClick={handleSearch}
-            className="h-9 px-4 bg-[#f8f9fa] border border-[#f8f9fa] rounded text-[#3c4043] text-[14px] hover:bg-[#f1f3f4] hover:border-[#dadce0] hover:shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all"
+            className="h-9 min-w-[54px] rounded border border-[#f8f9fa] bg-[#f8f9fa] px-4 text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-[0_1px_1px_rgba(0,0,0,0.1)]"
           >
-            Search
+            Google Search
           </button>
           <button
-            onClick={() => {
-              setSearchQuery("I'm feeling lucky")
-              router.push("/search?q=I'm feeling lucky")
-            }}
-            className="h-9 px-4 bg-[#f8f9fa] border border-[#f8f9fa] rounded text-[#3c4043] text-[14px] hover:bg-[#f1f3f4] hover:border-[#dadce0] hover:shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all"
+            onClick={handleLucky}
+            className="h-9 min-w-[54px] rounded border border-[#f8f9fa] bg-[#f8f9fa] px-4 text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-[0_1px_1px_rgba(0,0,0,0.1)]"
           >
-            I'm Feeling Lucky
+            AI Snapshot
           </button>
         </div>
 
-        {/* Language options */}
-          <div className="text-sm text-[#5f6368]">
-            alanwong.dev not offered in:
-            <span
-              className="text-[#4285f4] cursor-pointer hover:underline ml-2"
-              tabIndex={0}
-              role="button"
-            >
-              繁體中文
-            </span>
-            <span
-              className="text-[#4285f4] cursor-pointer hover:underline ml-2"
-              tabIndex={0}
-              role="button"
-            >
-              Française
-            </span>
-          </div>
+        <div className="mt-16 text-center text-[13px] leading-7 text-[#5f6368] sm:mt-[112px]">
+          alanwong.dev not offered in:
+          <span className="ml-2 cursor-pointer text-[#1a0dab] hover:underline" tabIndex={0} role="button">
+            繁體中文
+          </span>
+          <span className="ml-2 cursor-pointer text-[#1a0dab] hover:underline" tabIndex={0} role="button">
+            Française
+          </span>
+        </div>
         {/* Feature Flag */}
         {GEMINI_SEARCH_ENABLED && (
           <div className="mt-4 flex items-center">

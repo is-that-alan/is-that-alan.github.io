@@ -4,13 +4,13 @@ import { FlaskConical } from 'lucide-react';
 export default function ShimmerLoader() {
   const [phase, setPhase] = useState('searching');
   const [statusText, setStatusText] = useState('Searching...');
-  const [animation, setAnimation] = useState('shimmer_1.5s_infinite');
+  const [animation, setAnimation] = useState('shimmer_0.9s_infinite');
   const statuses = ['Generating...'];
 
   useEffect(() => {
     const hasLoadedBefore = sessionStorage.getItem('hasLoadedBefore');
     if (hasLoadedBefore) {
-      setAnimation('shimmer-fast_0.15s_infinite');
+      setAnimation('shimmer-fast_0.1s_infinite');
     } else {
       sessionStorage.setItem('hasLoadedBefore', 'true');
     }
@@ -24,7 +24,7 @@ export default function ShimmerLoader() {
         setStatusText(statuses[index]);
       }, 500);
       return () => clearInterval(interval);
-    }, 250);
+    }, 150);
 
     return () => clearTimeout(phaseTimer);
   }, []);

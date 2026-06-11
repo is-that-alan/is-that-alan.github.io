@@ -30,10 +30,10 @@ const STYLES = `
   .ai-shimmer-line::after {
     content: ""; position: absolute; inset: 0; transform: translateX(-100%);
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
-    animation: aiShimmer 1.3s infinite;
+    animation: aiShimmer 0.9s infinite;
   }
-  .ai-word { display: inline-block; opacity: 0; animation: aiWordIn 0.32s ease forwards; }
-  .ai-fade-in { animation: aiFadeIn 0.4s ease forwards; }
+  .ai-word { display: inline-block; opacity: 0; animation: aiWordIn 0.22s ease forwards; }
+  .ai-fade-in { animation: aiFadeIn 0.3s ease forwards; }
 `;
 
 /** Renders text with a Google-style staggered word-by-word fade-in. */
@@ -45,7 +45,7 @@ function StreamingText({ text }: { text: string }) {
     <div className="text-[15px] leading-7 text-[#202124] whitespace-pre-wrap">
       {tokens.map((tok, i) => {
         if (/^\s+$/.test(tok)) return <span key={i}>{tok}</span>;
-        const delay = Math.min(wordIdx * 14, 1400); // cap so long answers don't crawl
+        const delay = Math.min(wordIdx * 7, 700); // cap so long answers don't crawl
         wordIdx += 1;
         return (
           <span key={i} className="ai-word" style={{ animationDelay: `${delay}ms` }}>

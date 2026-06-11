@@ -19,21 +19,21 @@ function SearchResults() {
   const rawQuery = searchParams.get("q") || "";
   const query = sanitizeQuery(rawQuery);
 
-  const isLucky = query.toLowerCase().includes("feeling lucky");
+  const isLucky = searchParams.get("lucky") === "1";
 
   const results = useMemo(() => {
-    if (!query || isLucky) return siteIndex;
+    if (!query) return siteIndex;
     return searchSite(query);
-  }, [query, isLucky]);
+  }, [query]);
 
   const overview = useMemo(() => {
-    if (!query || isLucky) return null;
+    if (!query) return null;
     return matchOverview(query);
-  }, [query, isLucky]);
+  }, [query]);
 
   // Show the canned overview when an intent matched, or a friendly fallback
   // when the user searched but nothing strong matched.
-  const overviewToShow = overview ?? (query && !isLucky ? fallbackOverview : null);
+  const overviewToShow = overview ?? (query ? fallbackOverview : null);
 
   // The whole knowledge base is tiny, so we hand the model everything about
   // Alan on every query rather than retrieving snippets — no question can
@@ -43,13 +43,13 @@ function SearchResults() {
   return (
     <div className="min-h-screen bg-white text-[#202124]">
       <Header>
-        <GoogleSearchBar defaultValue={isLucky ? "" : query} />
+        <GoogleSearchBar defaultValue={query} />
       </Header>
 
       <div className="max-w-2xl mx-auto px-4 py-6">
-        {query && !isLucky && (
+        {query && (
           <p className="text-sm text-[#5f6368] mb-4">
-            About {results.length} result{results.length === 1 ? "" : "s"} for{" "}
+            {isLucky ? "AI snapshot for" : `About ${results.length} result${results.length === 1 ? "" : "s"} for`}{" "}
             <span className="text-[#202124] font-medium">“{query}”</span>
           </p>
         )}
@@ -78,7 +78,7 @@ function SearchResults() {
           ))}
         </div>
 
-        {query && !isLucky && results.length === 0 && (
+        {query && results.length === 0 && (
           <div className="mt-6 text-[#4d5156]">
             <p className="mb-2">
               No pages matched <span className="font-medium">“{query}”</span>.

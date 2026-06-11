@@ -8,18 +8,18 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="absolute bottom-0 w-full bg-[#f2f2f2] text-xs md:text-lg text-[#70757a]">
-        <div className="px-8 py-4 border-b border-[#dadce0]">
+      <footer className="w-full shrink-0 bg-[#f2f2f2] text-[14px] text-[#70757a]">
+        <div className="border-b border-[#dadce0] px-[30px] py-[15px] text-[15px]">
           <p>Hong Kong</p>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between px-8 py-4 space-y-4 md:space-y-0">
-          <div className="flex space-x-8">
-            <button onClick={() => setShowInfoCard(true)} className="hover:underline">How it works</button>
+        <div className="flex min-h-[46px] flex-col items-center justify-between px-5 md:flex-row md:items-stretch">
+          <div className="flex">
+            <button onClick={() => setShowInfoCard(true)} className="block whitespace-nowrap px-[15px] py-[15px] hover:underline">How it works</button>
           </div>
-          <div className="flex space-x-8">
-            <Link href="#" className="hover:underline">Privacy</Link>
-            <Link href="#" className="hover:underline">Terms</Link>
-            <Link href="#" className="hover:underline">Settings</Link>
+          <div className="flex">
+            <Link href="#" className="block whitespace-nowrap px-[15px] py-[15px] hover:underline">Privacy</Link>
+            <Link href="#" className="block whitespace-nowrap px-[15px] py-[15px] hover:underline">Terms</Link>
+            <Link href="#" className="block whitespace-nowrap px-[15px] py-[15px] hover:underline">Settings</Link>
           </div>
         </div>
       </footer>

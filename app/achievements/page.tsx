@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import GoogleSearchBar from "@/components/google-search-bar";
 import Link from "next/link";
 import Image from "next/image";
-import { Trophy, Gavel } from "lucide-react";
+import { Trophy, Gavel, GraduationCap } from "lucide-react";
 
 const featured = [
   {
@@ -32,6 +32,12 @@ const featured = [
 ];
 
 const events = [
+  {
+    icon: GraduationCap,
+    title: "Volunteer Python Tutor — Student Hubs (Bristol Hub)",
+    detail: "Prepared weekly material and taught teenagers the basic concepts of coding in Python.",
+    when: "Feb – Apr 2019",
+  },
   {
     icon: Gavel,
     title: "Judging panellist — HKU Hack4SGD",

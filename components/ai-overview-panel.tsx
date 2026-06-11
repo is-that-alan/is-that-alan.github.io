@@ -11,13 +11,13 @@ export default function AiOverviewPanel({ bio }: { bio?: string }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3500);
+    }, 1800);
     return () => clearTimeout(timer);
   }, []);
 
   const animationStyles = `
     .fade-in {
-      animation: fadeIn 0.5s ease-in-out forwards;
+      animation: fadeIn 0.3s ease-in-out forwards;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -78,7 +78,7 @@ export default function AiOverviewPanel({ bio }: { bio?: string }) {
               <>
                 <p className="mb-4">
                   <span className="bg-[#e8f0fe] font-semibold p-1 rounded">
-                    This is an AI-generated overview for the "I'm Feeling Lucky" search.
+                    This is an AI-generated overview for the AI Snapshot search.
                   </span>
                 </p>
                 <p>

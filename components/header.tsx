@@ -13,7 +13,7 @@ interface HeaderProps {
 
 export default function Header({ children, className, showLogo = true }: HeaderProps) {
   return (
-    <header className={`p-4 flex items-center justify-between ${className}`}>
+    <header className={`h-[60px] px-[6px] py-0 flex items-center justify-between ${className ?? ""}`}>
       {/* Left Side: Mobile Nav and optional Logo */}
       <div className="flex items-center space-x-4">
         <MobileNav />

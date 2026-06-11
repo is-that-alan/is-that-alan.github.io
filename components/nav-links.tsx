@@ -44,7 +44,7 @@ export function NavLinks() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <nav className="flex items-center space-x-6 text-xl text-[#3c4043]">
+    <nav className="flex items-center space-x-4 text-[14px] leading-6 text-[#3c4043]">
       <Link href="/projects" className="hover:underline">
         Projects
       </Link>
@@ -59,7 +59,7 @@ export function NavLinks() {
       </Link>
       <Popover onOpenChange={(open) => !open && setIsExpanded(false)}>
         <PopoverTrigger asChild>
-          <button className="opacity-60 hover:opacity-100 transition-opacity">
+          <button className="flex h-10 w-10 items-center justify-center opacity-60 hover:opacity-100 transition-opacity">
             <Image
               src="/images/waffle_icon.png"
               alt="Waffle icon"

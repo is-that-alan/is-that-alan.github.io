@@ -57,15 +57,28 @@ export const intents: OverviewIntent[] = [
   },
   {
     id: "experience",
-    keywords: ["experience", "work", "worked", "job", "career", "history", "companies", "where", "employer", "premialab", "societe", "generale", "hkust"],
+    keywords: ["experience", "work", "worked", "job", "career", "history", "companies", "where", "employer", "premialab", "societe", "generale", "hkust", "student hubs"],
     paragraphs: [
       "Alan is a Senior Associate, Data Science at Nan Fung (2024–present). Before that he was a Fintech Data Scientist at Premialab, where he led the cross-asset risk aggregation engine serving global banks and clients managing US$20tn AUM.",
-      "Earlier roles include a Data Analytics Research Assistant at HKUST (fine-tuning GPT/BERT on NVIDIA DGX) and a Cross-Asset Risk Trainee at Société Générale (Power BI dashboards still in use 3+ years later).",
+      "Earlier roles include a Data Analytics Research Assistant at HKUST (fine-tuning GPT/BERT on NVIDIA DGX), a Cross-Asset Risk Trainee at Société Générale (Power BI dashboards still in use 3+ years later), and volunteer Python tutoring with Student Hubs in Bristol.",
     ],
     related: [
       { label: "Nan Fung", url: "/experience/nan-fung" },
       { label: "Premialab", url: "/experience/premialab" },
       { label: "Société Générale", url: "/experience/societe-generale" },
+      { label: "Student Hubs", url: "/experience/student-hubs" },
+    ],
+  },
+  {
+    id: "volunteering",
+    keywords: ["volunteer", "volunteering", "python tutor", "tutor", "teaching", "student hubs", "bristol hub", "teenagers", "coding", "education"],
+    paragraphs: [
+      "Alan volunteered as a Python Tutor with Student Hubs (Bristol Hub) from February to April 2019.",
+      "He attended weekly sessions and prepared material to teach teenagers the basic concepts of coding in Python.",
+    ],
+    related: [
+      { label: "Volunteer Python Tutor", url: "/experience/student-hubs" },
+      { label: "Achievements", url: "/achievements" },
     ],
   },
   {
