@@ -30,12 +30,18 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          # Live AI Overview config. Set these as repo Variables (Settings →
-          # Secrets and variables → Actions → Variables). All optional — with
-          # none set, the site uses the static canned overview.
+          # Live AI Overview config, all optional — with none set, the site
+          # uses the static canned overview.
+          # AI_WORKER_URL is not sensitive: keep it as a repo Variable
+          # (Settings → Secrets and variables → Actions → Variables).
           NEXT_PUBLIC_AI_WORKER_URL: ${{ vars.AI_WORKER_URL }}
-          NEXT_PUBLIC_GEMINI_API_KEY: ${{ vars.GEMINI_API_KEY }}
-          NEXT_PUBLIC_OPENROUTER_API_KEY: ${{ vars.OPENROUTER_API_KEY }}
+          # GEMINI_API_KEY / OPENROUTER_API_KEY end up embedded in the public
+          # JS bundle either way (see lib/ai-config.ts), but must be stored
+          # as repo Secrets, not Variables — Variables are plaintext and
+          # readable via the API by anyone with repo read access, which is
+          # how a prior pair of keys leaked before they were even deployed.
+          NEXT_PUBLIC_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEXT_PUBLIC_OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
